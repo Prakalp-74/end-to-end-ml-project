@@ -9,7 +9,7 @@
    "source": [
     "import numpy as np\n",
     "import pandas as pd\n",
-    "import matplotlib.pyplot as plt\n"
+    "import matplotlib.pyplot as plt"
    ]
   },
   {
@@ -19,7 +19,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "cols = [\"fLength\", \"fwidth\", \"fsize\", \"fConc\", \"fConcle\", \"fAsym\", \"fM3Trans\", \"fAlpha\", \"fDist\", \"class\"] \n",
+    "cols = [\"fLength\", \"fwidth\", \"fsize\", \"fConc\", \"fConel\", \"fAsym\", \"fM3Trans\", \"fAlpha\", \"fDist\", \"class\"] \n",
     "df = pd.read_csv(\"magic04.data\", names=cols)"
    ]
   },
@@ -27,7 +27,9 @@
    "cell_type": "code",
    "execution_count": 7,
    "id": "1ed30b23-214c-4726-884c-04e3e503a989",
-   "metadata": {},
+   "metadata": {
+    "scrolled": true
+   },
    "outputs": [
     {
      "data": {
@@ -159,16 +161,152 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 9,
    "id": "2a5af37e-f721-4f74-b2fb-1d528a72cc7c",
    "metadata": {},
    "outputs": [],
-   "source": []
+   "source": [
+    "df[\"class\"] = (df[\"class\"] == \"g\").astype(int)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "d9a9203e-de2c-4ebe-a1ee-96e6bf1fb0f0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>fLength</th>\n",
+       "      <th>fwidth</th>\n",
+       "      <th>fsize</th>\n",
+       "      <th>fConc</th>\n",
+       "      <th>fConcle</th>\n",
+       "      <th>fAsym</th>\n",
+       "      <th>fM3Trans</th>\n",
+       "      <th>fAlpha</th>\n",
+       "      <th>fDist</th>\n",
+       "      <th>class</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>28.7967</th>\n",
+       "      <td>16.0021</td>\n",
+       "      <td>2.6449</td>\n",
+       "      <td>0.3918</td>\n",
+       "      <td>0.1982</td>\n",
+       "      <td>27.7004</td>\n",
+       "      <td>22.0110</td>\n",
+       "      <td>-8.2027</td>\n",
+       "      <td>40.0920</td>\n",
+       "      <td>81.8828</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>31.6036</th>\n",
+       "      <td>11.7235</td>\n",
+       "      <td>2.5185</td>\n",
+       "      <td>0.5303</td>\n",
+       "      <td>0.3773</td>\n",
+       "      <td>26.2722</td>\n",
+       "      <td>23.8238</td>\n",
+       "      <td>-9.9574</td>\n",
+       "      <td>6.3609</td>\n",
+       "      <td>205.2610</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>162.0520</th>\n",
+       "      <td>136.0310</td>\n",
+       "      <td>4.0612</td>\n",
+       "      <td>0.0374</td>\n",
+       "      <td>0.0187</td>\n",
+       "      <td>116.7410</td>\n",
+       "      <td>-64.8580</td>\n",
+       "      <td>-45.2160</td>\n",
+       "      <td>76.9600</td>\n",
+       "      <td>256.7880</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>23.8172</th>\n",
+       "      <td>9.5728</td>\n",
+       "      <td>2.3385</td>\n",
+       "      <td>0.6147</td>\n",
+       "      <td>0.3922</td>\n",
+       "      <td>27.2107</td>\n",
+       "      <td>-6.4633</td>\n",
+       "      <td>-7.1513</td>\n",
+       "      <td>10.4490</td>\n",
+       "      <td>116.7370</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>75.1362</th>\n",
+       "      <td>30.9205</td>\n",
+       "      <td>3.1611</td>\n",
+       "      <td>0.3168</td>\n",
+       "      <td>0.1832</td>\n",
+       "      <td>-5.5277</td>\n",
+       "      <td>28.5525</td>\n",
+       "      <td>21.8393</td>\n",
+       "      <td>4.6480</td>\n",
+       "      <td>356.4620</td>\n",
+       "      <td>1</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "           fLength  fwidth   fsize   fConc   fConcle    fAsym  fM3Trans  \\\n",
+       "28.7967    16.0021  2.6449  0.3918  0.1982   27.7004  22.0110   -8.2027   \n",
+       "31.6036    11.7235  2.5185  0.5303  0.3773   26.2722  23.8238   -9.9574   \n",
+       "162.0520  136.0310  4.0612  0.0374  0.0187  116.7410 -64.8580  -45.2160   \n",
+       "23.8172     9.5728  2.3385  0.6147  0.3922   27.2107  -6.4633   -7.1513   \n",
+       "75.1362    30.9205  3.1611  0.3168  0.1832   -5.5277  28.5525   21.8393   \n",
+       "\n",
+       "           fAlpha     fDist  class  \n",
+       "28.7967   40.0920   81.8828      1  \n",
+       "31.6036    6.3609  205.2610      1  \n",
+       "162.0520  76.9600  256.7880      1  \n",
+       "23.8172   10.4490  116.7370      1  \n",
+       "75.1362    4.6480  356.4620      1  "
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.head()"
+   ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "d9a9203e-de2c-4ebe-a1ee-96e6bf1fb0f0",
+   "id": "cfa90b7b-e6f7-4e67-98d8-c87328bd5817",
    "metadata": {},
    "outputs": [],
    "source": []
